@@ -11,13 +11,13 @@ Querylet::CGI - turn a querylet into a web application
 
 =head1 VERSION
 
-version 0.12
+version 0.14
 
- $Id: CGI.pm,v 1.5 2004/09/20 18:40:20 rjbs Exp $
+ $Id: CGI.pm,v 1.7 2004/12/16 16:04:29 rjbs Exp $
 
 =cut
 
-our $VERSION = '0.12';
+our $VERSION = '0.14';
 
 =head1 SYNOPSIS
 
@@ -82,7 +82,8 @@ Querylet::Query->register_output_handler(cgi_html_form => \&_as_form);
 sub _as_form {
 	my $q = shift;
 	my $form = "Content-type: text/html\n\n";
-	$form .= "<html><body><form><table>";
+	$form .= "<html><head><title>querylet input required</title></head>";
+	$form .= "<body><form><table>";
 	$form .= "<tr><th>$_</th><td><input name='$_' value='"
 		. (defined param($_) ? param($_) : '')
 		. "' /></td></tr>"
@@ -102,11 +103,15 @@ sub _as_html {
 	my $html = "Content-type: text/html\n\n";
 	$html .= "<html><head><title>results of query</title></head>";
 	$html .= "<body><table><tr>";
-	$html .= join('', map { "<th>$_</th>" } @$columns);
+	$html .= join('', map { "<th>" . $q->header($_) . "</th>" } @$columns);
 	$html .= "</tr>\n";
 
-	$html .= "<tr>" . join('', map { "<td>$_</td>" } @$_{@$columns}). "</tr>\n"
-		foreach (@$results);
+	if (@$results) {
+		$html .= "<tr>" . join('', map { "<td>$_</td>" } @$_{@$columns}). "</tr>\n"
+			foreach (@$results);
+	} else {
+		$html .= "<tr><td colspan='". scalar @$columns ."'>no results</td></tr>\n";
+	}
 
 	$html .= "</table></body></html>\n";
 }

@@ -11,7 +11,7 @@ WriteMakefile(
     PREREQ_PM => {
         'Test::More' => 0,
         'CGI'        => 2,
-        'Querylet'        => 0.22,
+        'Querylet'        => 0.28,
         'Querylet::Input' => 0.22,
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
