@@ -11,8 +11,8 @@ WriteMakefile(
     PREREQ_PM => {
         'Test::More' => 0,
         'CGI'        => 2,
-        'Querylet'        => 0.20,
-        'Querylet::Input' => 0.20,
+        'Querylet'        => 0.22,
+        'Querylet::Input' => 0.22,
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'Querylet-CGI-*' },

@@ -11,13 +11,13 @@ Querylet::CGI - turn a querylet into a web application
 
 =head1 VERSION
 
-version 0.10
+version 0.12
 
- $Id: CGI.pm,v 1.4 2004/09/19 21:35:32 rjbs Exp $
+ $Id: CGI.pm,v 1.5 2004/09/20 18:40:20 rjbs Exp $
 
 =cut
 
-our $VERSION = '0.10';
+our $VERSION = '0.12';
 
 =head1 SYNOPSIS
 
@@ -27,15 +27,14 @@ our $VERSION = '0.10';
  query:
    SELECT firstname, age
    FROM people
-   WHERE lastname = '[% lastname %]'
+   WHERE lastname = ?
    ORDER BY firstname
  
  input type: cgi
 
  input: lastname
 
- munge query:
-   lastname => $input->{lastname}
+ query parameter: $input->{lastname}
 
 =head1 DESCRIPTION
 

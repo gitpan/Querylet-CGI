@@ -1,4 +1,6 @@
 Revision history for Querylet-CGI
 
+0.12    2004-09-20 14:40
+ * added Querylet::CGI::Auto
 0.10    2004-09-19 14:00
-        first crude attempt
+ * first crude attempt

@@ -1,13 +1,13 @@
 # http://module-build.sourceforge.net/META-spec.html
 #XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
 name:         Querylet-CGI
-version:      0.10
+version:      0.12
 version_from: lib/Querylet/CGI.pm
 installdirs:  site
 requires:
     CGI:                           2
-    Querylet:                      0.2
-    Querylet::Input:               0.2
+    Querylet:                      0.22
+    Querylet::Input:               0.22
     Test::More:                    0
 
 distribution_type: module
