@@ -11,13 +11,13 @@ Querylet::CGI - turn a querylet into a web application
 
 =head1 VERSION
 
-version 0.14
+version 0.141
 
- $Id: CGI.pm,v 1.7 2004/12/16 16:04:29 rjbs Exp $
+ $Id: /my/cs/projects/q/cgi/trunk/lib/Querylet/CGI.pm 28012 2006-11-14T22:31:48.667796Z rjbs  $
 
 =cut
 
-our $VERSION = '0.14';
+our $VERSION = '0.141';
 
 =head1 SYNOPSIS
 
