@@ -12,7 +12,7 @@ Querylet::CGI::Auto - run a querylet as context suggests
 
 version 0.141
 
- $Id: /my/cs/projects/q/cgi/trunk/lib/Querylet/CGI/Auto.pm 28012 2006-11-14T22:31:48.667796Z rjbs  $
+ $Id: /my/cs/projects/q/cgi/trunk/lib/Querylet/CGI/Auto.pm 28047 2006-11-14T23:39:22.135386Z rjbs  $
 
 =cut
 

@@ -1,8 +1,8 @@
 --- #YAML:1.0
 name:                Querylet-CGI
-version:             0.141
+version:             0.142
 abstract:            turn a querylet into a web application
-license:             ~
+license:             perl
 generated_by:        ExtUtils::MakeMaker version 6.31
 distribution_type:   module
 requires:     
