@@ -1,67 +1,17 @@
-package Querylet::CGI;
-use CGI qw/param/;
-use base(Querylet::Input);
-
-use warnings;
 use strict;
+use warnings;
+package Querylet::CGI;
+{
+  $Querylet::CGI::VERSION = '0.143';
+}
+use parent 'Querylet::Input';
+# ABSTRACT: turn a querylet into a web application
 
-=head1 NAME
+use CGI qw/param/;
 
-Querylet::CGI - turn a querylet into a web application
-
-=head1 VERSION
-
-version 0.142
-
- $Id: /my/cs/projects/q/cgi/trunk/lib/Querylet/CGI.pm 28168 2006-11-16T13:28:06.203711Z rjbs  $
-
-=cut
-
-our $VERSION = '0.142';
-
-=head1 SYNOPSIS
-
- use Querylet;
- use Querylet::CGI;
-
- query:
-   SELECT firstname, age
-   FROM people
-   WHERE lastname = ?
-   ORDER BY firstname
- 
- input type: cgi
-
- input: lastname
-
- query parameter: $input->{lastname}
-
-=head1 DESCRIPTION
-
-Querylet::CGI provides an input handler for Querylet, retrieving input
-parameters from the CGI environment.  If not all required inputs are found, it
-changes the Query object's output type, causing it to produce a form requesting
-the required input parameters.
-
-=head1 METHODS
-
-=over 4
-
-=item C<< default_type >>
-
-Querylet::CGI acts as a Querylet::Input module, and registers itself as an
-input handler when used.  The default type to register is 'cgi'
-
-=cut
 
 sub default_type { 'cgi' }
 
-=item C<< handler >>
-
-The default registered handler will retrieve parameters from the CGI
-environment using the CGI module.
-
-=cut
 
 sub handler { \&_from_cgi }
 
@@ -116,26 +66,65 @@ sub _as_html {
 	$html .= "</table></body></html>\n";
 }
 
-=back
+1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+Querylet::CGI - turn a querylet into a web application
+
+=head1 VERSION
+
+version 0.143
+
+=head1 SYNOPSIS
+
+ use Querylet;
+ use Querylet::CGI;
+
+ query:
+   SELECT firstname, age
+   FROM people
+   WHERE lastname = ?
+   ORDER BY firstname
+ 
+ input type: cgi
+
+ input: lastname
+
+ query parameter: $input->{lastname}
+
+=head1 DESCRIPTION
+
+Querylet::CGI provides an input handler for Querylet, retrieving input
+parameters from the CGI environment.  If not all required inputs are found, it
+changes the Query object's output type, causing it to produce a form requesting
+the required input parameters.
+
+=head1 METHODS
+
+=head2 default_type
+
+Querylet::CGI acts as a Querylet::Input module, and registers itself as an
+input handler when used.  The default type to register is 'cgi'
+
+=head2 handler
+
+The default registered handler will retrieve parameters from the CGI
+environment using the CGI module.
 
 =head1 AUTHOR
 
-Ricardo SIGNES, C<< <rjbs@cpan.org> >>
+Ricardo SIGNES <rjbs@cpan.org>
 
-=head1 BUGS
+=head1 COPYRIGHT AND LICENSE
 
-Please report any bugs or feature requests to
-C<bug-querylet-cgi@rt.cpan.org>, or through the web interface at
-L<http://rt.cpan.org>.  I will be notified, and then you'll automatically be
-notified of progress on your bug as I make changes.
+This software is copyright (c) 2004 by Ricardo SIGNES.
 
-=head1 COPYRIGHT
-
-Copyright 2004 Ricardo SIGNES, All Rights Reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-1;
